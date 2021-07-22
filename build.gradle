@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'com.google'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'org.testng', name: 'testng', version: '7.4.0'
+    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '4.3.3'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.8.0'
+    implementation group: 'com.opencsv', name: 'opencsv', version: '4.6'
+    implementation group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    implementation group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+
+}
+
+test{
+    useTestNG()
+    filter {
+        excludeTestsMatching "*apiTests*"
+        excludeTestsMatching "*unitTests*"
+    }
+}
